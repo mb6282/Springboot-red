@@ -30,8 +30,20 @@ public class BoardsController {
 	}
 	
 	@GetMapping("/boards")
-	public RespDto<?> select(){
-		return new RespDto<>(1,"글조회성공",boardsDao.findAll());
+	public RespDto<?> getAll(){
+		return new RespDto<>(1,"글전체조회성공",boardsDao.findAll());
+	}
+	
+//	@GetMapping("/boards/{id}")
+//	public RespDto<?> getOne(@PathVariable Integer id){
+//	return new RespDto<>(1,"한건조회성공",boardsDao.findById(id));
+//	}
+	//같은 기능을 하기에 기존의 getOne을 삭제(주석처리)
+	//하지만 findById자체는 필요함 (업데이트 때 영속화를 하기 위해 사용하기 때문)
+	
+	@GetMapping("/boards/{id}")
+	public RespDto<?> getOne(@PathVariable Integer id){
+	return new RespDto<>(1,"한건조회성공",boardsDao.findByIdtoDetail(id));
 	}
 	
 	@PutMapping("/boards/{id}")
@@ -51,4 +63,5 @@ public class BoardsController {
 		//return new RespDto<>(1, "글삭제성공", boardsDao.delete(id)); => 오류남
 		//delete는 return이 없는 void타입 메서드라 body에 들어가지 못한다.
 	}
+
 }
