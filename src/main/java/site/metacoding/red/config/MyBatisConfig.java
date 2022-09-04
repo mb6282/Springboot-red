@@ -21,7 +21,7 @@ public class MyBatisConfig {
         sessionFactory.setDataSource(dataSource);
         sessionFactory.setMapperLocations(
         		new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml"));
-        return sessionFactory.getObject();
+        return sessionFactory.getObject(); 
     }
 
     @Bean
