@@ -16,4 +16,17 @@
 	<select id="findAll" resultType="site.metacoding.red.domain.users.Users">
 		SELECT * FROM users ORDER BY id DESC
 	</select>
+	
+	<update id="update">
+		UPDATE users
+		SET username = #{username},
+		password = #{password},
+		email = #{email}
+		WHERE id = #{id}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM users WHERE id = #{id}
+	</delete>
+	
 </mapper>
